@@ -25,7 +25,7 @@ public class Main
     /**
      *  Instantiate a Main object and call run() on the object.
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
       new Main().run();
     }
 
@@ -74,7 +74,7 @@ public class Main
       
         while(in.hasNext())
         {
-           String studentType = in.nextLine();
+           String studentType = in.next();
            if(studentType.equals("C"))
            {
               studentList.add(readOnCampusStudent(in));
@@ -232,8 +232,8 @@ public class Main
         {
            for(Student student : pStudentList)
            {
-            System.out.print(student.getId() + " " + student.getLastName() + " " + student.getFirstName());
-            out.printf("%.2f%n" + student.getTuition());
+            out.print(student.getId() + " " + student.getLastName() + " " + student.getFirstName());
+            out.printf("%.2f%n", student.getTuition());
            }
         }
         catch(Exception e)
