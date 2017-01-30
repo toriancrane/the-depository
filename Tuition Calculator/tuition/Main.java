@@ -25,7 +25,7 @@ public class Main
     /**
      *  Instantiate a Main object and call run() on the object.
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args){
       new Main().run();
     }
 
