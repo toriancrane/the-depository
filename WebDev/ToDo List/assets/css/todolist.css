@@ -1,0 +1,11 @@
+html{
+    height: 100%;
+}
+
+#content{
+    width: 66%;
+	margin: 20px auto;
+}
+ul{
+  padding-top: 10px;
+}
