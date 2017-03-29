@@ -1,0 +1,169 @@
+/* Changing the background color of the site*/
+.bg{
+    background: #5d5d5d;
+}
+
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+/* Float the list items side by side */
+ul.topnav li {
+  float: left;
+}
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 24px;
+    font-family: 'Advent Pro', sans-serif;
+}
+/* Change background color of links on hover */
+ul.topnav li a:hover {
+  background-color: #111;
+}
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav li.icon {
+  display: none;
+}
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width:680px) {
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+@media screen and (max-width:680px) {
+  ul.topnav.responsive {position: relative;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.topnav.responsive li a {
+    display: block;
+    text-align: left;
+  }
+}
+
+/*Adding a shadow box around my main div sections*/
+.drop-shadow {
+        -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+    }
+.container.drop-shadow {
+        padding-left:0;
+        padding-right:0;
+    }
+
+/* Styling for my h2 elements*/
+h2{
+  text-align: center;
+}
+
+/* Styling for my panel elements*/
+.panel-body{
+  background-color: #eeeae6;
+}
+.panel-default > .panel-heading {
+  background-color: #d9d1c8!important;
+  font-family: 'Advent Pro', sans-serif!important;
+}
+/*Padding for my social media icons*/
+.img-padding{
+  padding-right: 50px;
+}
+/*Formatting for my p elements*/
+p{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 17px;
+  padding-right: 50px;
+  text-align: justify;
+}
+/* Formatting for my well class*/
+.well{
+  margin-left: 160px;
+  margin-right: 160px;
+}
+#contact-img{
+  margin-top: 45px;
+  text-align: center;
+}
+
+#progressbar {
+  background-color: black;
+   width: 85%; /* Adjust with JavaScript */
+  border-radius: 13px; /* (height of inner div) / 2 + padding */
+  padding: 3px;
+}
+
+#progressbar > div {
+   background-color: orange;
+   width: 40%; /* Adjust with JavaScript */
+   height: 10px;
+   border-radius: 10px;
+}
+
+#progressbar1 {
+  background-color: black;
+   width: 85%; /* Adjust with JavaScript */
+  border-radius: 13px; /* (height of inner div) / 2 + padding */
+  padding: 3px;
+}
+
+#progressbar1 > div {
+   background-color: orange;
+   width: 55%; /* Adjust with JavaScript */
+   height: 10px;
+   border-radius: 10px;
+}
+
+#progressbar2 {
+  background-color: black;
+   width: 85%; /* Adjust with JavaScript */
+  border-radius: 13px; /* (height of inner div) / 2 + padding */
+  padding: 3px;
+}
+
+#progressbar2 > div {
+   background-color: orange;
+   width: 75%; /* Adjust with JavaScript */
+   height: 10px;
+   border-radius: 10px;
+}
+
+#progressbar3 {
+  background-color: black;
+   width: 85%; /* Adjust with JavaScript */
+  border-radius: 13px; /* (height of inner div) / 2 + padding */
+  padding: 3px;
+}
+
+#progressbar3 > div {
+   background-color: orange;
+   width: 100%; /* Adjust with JavaScript */
+   height: 10px;
+   border-radius: 10px;
+}
+
+hr{
+  height:5px;
+  border:none;
+  color:#d9d1c8;
+  background-color:#d9d1c8;
+}
