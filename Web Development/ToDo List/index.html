@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To-Do List</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/todolist.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="assets/js/todolist.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<div class="panel panel-default" id="content">
+	<div class="panel-heading"><h1>To-Do List</h1></div>
+	<div class="panel-body">
+		<div class="input-group">         
+         <span class="input-group-btn">
+             <button class="btn btn-info" type="button" id ="addTask"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+         </span>
+         <input type="text" class="form-control" id="todoItem" placeholder="Add a to-do">
+       </div>	
+    		<ul id="todoList" class="list-group">
+
+		    </ul>
+	  </div>
+  </div>
+</div>
+</body>
+</html>
