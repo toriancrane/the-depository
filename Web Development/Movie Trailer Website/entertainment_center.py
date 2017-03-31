@@ -33,4 +33,5 @@ spirited_away = movie.Movie("Spirited Away",
 #Define movie array
 movies = [captain_america_cw, psycho_pass, jupiter_ascending, maleficent, fantastic_beasts, spirited_away]
 
-fresh_tomatoes.open_movies_page(movies)
+#fresh_tomatoes.open_movies_page(movies)
+print(movie.Movie.valid_ratings)
