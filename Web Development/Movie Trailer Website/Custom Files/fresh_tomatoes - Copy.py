@@ -1,4 +1,9 @@
+import webbrowser
+import os
+import re
 
+# Styles and scripting for the page
+main_page_head = '''
 <head>
     <meta charset="utf-8">
     <title>Fresh Tomatoes!</title>
@@ -35,6 +40,7 @@
             background-color: #EEE;
             cursor: pointer;
         }
+        //Added height to h2 element to accommodate lengthy titles
         h2{
             height: 40px;
         }
@@ -75,10 +81,19 @@
           $('.movie-tile').hide().first().show("fast", function showNext() {
             $(this).next("div").show("fast", showNext);
           });
+        //Show the storyline of the movies when hovering over tile
+        $(".movie-tile").hover(function(){
+              $(this).children(".storyline").slideUp();
+            }, function(){
+              $(this).children(".storyline").slideDown();
+            });
         });
     </script>
 </head>
+'''
 
+# The main page layout and title bar
+main_page_content = '''
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -106,37 +121,48 @@
       </div>
     </div>
     <div class="container">
-      
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="dKrVegVI0Us" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg" width="220" height="342">
-    <h2>Captain America: Civil War</h2>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="GY36cxjaN9I" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/a/a1/Psycho-Pass_The_Movie_Visual.jpg" width="220" height="342">
-    <h2>Psycho-Pass: The Movie</h2>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ZoCyL_Pqzu8" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/7/76/%27Jupiter_Ascending%27_Theatrical_Poster.jpg" width="220" height="342">
-    <h2>Jupiter Ascending</h2>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="w-XO4XiRop0" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/5/55/Maleficent_poster.jpg" width="220" height="342">
-    <h2>Maleficent</h2>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="YdgQj7xcDJo" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Fantastic_Beasts_and_Where_to_Find_Them_poster.png" width="220" height="342">
-    <h2>Fantastic Beasts and Where to Find Them</h2>
-</div>
-
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ByXuk9QqQkk" data-toggle="modal" data-target="#trailer">
-    <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Spirited_Away_poster.JPG" width="220" height="342">
-    <h2>Spirited Away</h2>
-</div>
-
+      {movie_tiles}
     </div>
   </body>
 </html>
+'''
+
+# A single movie entry html template
+movie_tile_content = '''
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+    <img src="{poster_image_url}" width="220" height="342">
+    <h2>{movie_title}</h2>
+</div>
+'''
+
+def create_movie_tiles_content(movies):
+    # The HTML content for this section of the page
+    content = ''
+    for movie in movies:
+        # Extract the youtube ID from the url
+        youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
+        youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
+        trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
+
+        # Append the tile for the movie with its content filled in
+        content += movie_tile_content.format(
+            movie_title=movie.title,
+            poster_image_url=movie.poster_image_url,
+            trailer_youtube_id=trailer_youtube_id
+        )
+    return content
+
+def open_movies_page(movies):
+  # Create or overwrite the output file
+  output_file = open('fresh_tomatoes.html', 'w')
+
+  # Replace the placeholder for the movie tiles with the actual dynamically generated content
+  rendered_content = main_page_content.format(movie_tiles=create_movie_tiles_content(movies))
+
+  # Output the file
+  output_file.write(main_page_head + rendered_content)
+  output_file.close()
+
+  # open the output file in the browser
+  url = os.path.abspath(output_file.name)
+  webbrowser.open('file://' + url, new=2) # open in a new tab, if possible

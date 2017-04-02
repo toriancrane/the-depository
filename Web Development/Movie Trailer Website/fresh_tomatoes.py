@@ -40,6 +40,9 @@ main_page_head = '''
             background-color: #EEE;
             cursor: pointer;
         }
+        h2{
+            height: 40px;
+        }
         .scale-media {
             padding-bottom: 56.25%;
             position: relative;
